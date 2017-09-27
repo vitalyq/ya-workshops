@@ -1,3 +1,4 @@
+// My simplified implementation of co
 const co = generator =>
   new Promise((resolve) => {
     const iter = generator();
@@ -7,6 +8,8 @@ const co = generator =>
       } else {
         status.value.then((res) => {
           iterate(iter.next(res));
+        }).catch((err) => {
+          iterate(iter.throw(err));
         });
       }
     };
