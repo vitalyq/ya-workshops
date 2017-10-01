@@ -1,8 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BabelWebpackPlugin = require('babel-minify-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+const prod = process.env.NODE_ENV === 'production';
+
+const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -35,3 +38,11 @@ module.exports = {
     new ExtractTextPlugin('styles.css'),
   ]
 };
+
+if (prod) {
+  config.plugins = config.plugins.concat([
+    new BabelWebpackPlugin(),
+  ]);
+}
+
+module.exports = config;
