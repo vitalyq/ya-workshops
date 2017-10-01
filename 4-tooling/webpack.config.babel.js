@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BabelWebpackPlugin = require('babel-minify-webpack-plugin');
@@ -41,6 +42,7 @@ const config = {
 
 if (prod) {
   config.plugins = config.plugins.concat([
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new BabelWebpackPlugin(),
   ]);
 }
