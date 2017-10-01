@@ -12,8 +12,8 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          'eslint-loader',
-          'babel-loader'
+          'babel-loader',
+          'eslint-loader'
         ],
         include: path.join(__dirname, 'src')
       },
