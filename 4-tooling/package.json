@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babel": "babel src/index.js -o dist/index.js",
-    "postcss": "postcss src/style.css -o dist/style.css",
+    "postcss": "postcss src/styles.css -o dist/styles.css",
     "style": "stylelint \"src/*.css\"",
     "eslint": "eslint src",
     "gulp": "gulp",

@@ -31,7 +31,7 @@ gulp.task('css', () => {
 });
 
 // Use as the last build step
-gulp.task('index', () => {
+gulp.task('index', ['js', 'css'], () => {
   const target = gulp.src('./src/index.html');
   const sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], { read: false });
   const options = {
