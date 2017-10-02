@@ -10,7 +10,7 @@
     "eslint": "eslint src",
     "gulp": "gulp",
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "webpack-dev-server --inline --content-base dist --colors",
+    "start": "webpack-dev-server --content-base dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
