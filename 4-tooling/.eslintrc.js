@@ -9,6 +9,6 @@ module.exports = {
     sourceType: 'module'
   },
   globals: {
-    yamoney_nodejs_school: true
+    'yamoney_nodejs_school': true
   }
 };

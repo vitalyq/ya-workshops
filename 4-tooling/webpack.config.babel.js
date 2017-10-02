@@ -1,7 +1,12 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BabelWebpackPlugin = require('babel-minify-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+const prod = process.env.NODE_ENV === 'production';
+
+const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -12,22 +17,34 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          'eslint-loader',
-          'babel-loader'
+          'babel-loader',
+          'eslint-loader'
         ],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader'
+          ]
+        })
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({ title: 'Yamoney Node.js School' }),
+    new ExtractTextPlugin('styles.css'),
   ]
 };
+
+if (prod) {
+  config.plugins = config.plugins.concat([
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new BabelWebpackPlugin(),
+  ]);
+}
+
+module.exports = config;
