@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Витрина</title>
+</head>
+<body>
+  <# if (!data.authorized) { #>
+    <p>Витрина доступна только для зарегистрированных пользователей.</p>
+  <# } #>
+  <# if (data.authorized) { #>
+    <h1>Витрина</h1>
+    <ul>
+      <# for (const item of data.showcase) { #>
+        <li>
+          <strong><#= item.name #></strong> - <#= item.price #> &#8381;
+          <# if (data.bonuses.includes(item)) { #>
+            <span>После покупки вам будет доступен бонус.</span>
+          <# } #>
+        </li>
+      <# } #>
+    </ul>
+  <# } #>
+</body>
+</html>
