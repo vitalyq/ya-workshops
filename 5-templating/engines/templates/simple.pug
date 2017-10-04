@@ -1,0 +1,10 @@
+h1= header
+ul
+  each val in items
+    if val.current
+      li
+        strong= val.name
+    else
+      li
+        a(href=val.url)
+          = val.name

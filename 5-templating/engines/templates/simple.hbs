@@ -1,0 +1,16 @@
+<h1>{{header}}</h1>
+<ul>
+  {{#each items}}
+  <li>
+    {{#if this.current}}
+    <strong>
+      {{this.name}}
+    </strong>
+    {{else}}
+    <a href="{{this.url}}">
+      {{this.name}}
+    </a>
+    {{/if}}
+  </li>
+  {{/each}}
+</ul>
